@@ -1,0 +1,93 @@
+Potential import requirements: numpy, tkinter
+
+To run the program, enter in the terminal: python3 AntColony.py
+This will launch the GUI.
+
+Simplified GUI use info:
+Select an algorithm option from the 'Algorithm' dropdown menu (explanations for each one can be
+found below). Leave all remaining dropdowns as they are - the default settings have been optimized
+for your use.
+(Note: if you are not using a computer with a display that is smaller than those
+found in the aquarium - such as a laptop - then you must select 'Laptop' from the 'Screen' dropdown
+menu, otherwise the grid will not output properly for your screen size).
+Click the 'Run' button. A loading bar will mark the progress of the run.
+Please note that some algorithms might take a long time to finish running (due to the need for
+multiple training/evolving episodes).
+When the loading bar reaches the end, this means he final day of the run has begun, and it will
+begin being output to the screen.
+
+Key:
+XX = Ant (note that multiple ants may occupy the same square and appear as just one ant XX)
+↑↑,↓↓,←←,→→ = food scent trail (pointing in direction of food). Note that the scents dissipate over
+time and will disappear once they drop bellow a certain threshold.
+1-9 = unit of food at position
+1C-9C = units (in hundreds) of food at position
+1K-9K = units (in thousands) of food at position
+
+Quick Explanation:
+Our program creates ants that traverse a grid in search of food (using different algorithms).
+When they find food, they bring it back to the anthill - leaving a scent trail in their wake to
+guide other passing ants to the food - and then head back out to search some more.
+They do this one step at a time, 500 steps per day, 10 days per episode (some algorithms will
+run multiples episodes, others just one).
+The 'Food Delta' field will display the total food delta (food_collected - food_consumed) for the
+current episode, and will be reset at the start of each new episode.
+
+---------------------------------------------------------------------------------------------------
+
+Detailed use info:
+The GUI has multiple dropdown menus on the top of the screen:
+    Algorithm: this is the algorithm used to determine the ants' movements in their search for food,
+     as well as the number of ants in the anthill.
+     They options are:
+            Random - There will be 300 ants. The ants will search randomly.
+
+            Scent Trail - There will be 300 ants. The ants will search randomly unless they find a
+            food scent trail left by another ant, in which case they will follow it until they reach
+             the food.
+
+            Genetic - There will be 300 ants. The ants will learn how to search using a genetic
+            algorithm. There will be a training period before a final run is performed.
+
+            Q-Learning - There will be 300 ants. The ants will learn how to search using a
+            q-learning algorithm. There will be a training period before a final run is performed.
+
+            Independent Q-Learning - The number of ants will change from day to day based on a
+            q-leaning algorithm. The ants will also learn how to search using a q-learning algorithm
+            . The two algorithms will run independently of one-another (1-day on, 1-day off). There
+            will be a training period before a final run is performed.
+
+            Simultaneous Q-Learning - The number of ants will change from day to day based on a
+            q-leaning algorithm. The ants will also learn how to search using a q-learning algorithm
+            . The two algorithms will run together day-by-day. There will be a training period
+            before a final run is performed.
+
+    Food Probability: this determines the likelihood of food being added to the grid. There are 3
+    options: Low, Medium, High.
+
+    Output Density: this determines how much of the grid will be output, and how small each square
+    will be.
+    The options are:
+        Low - the central 3rd of the grid will be shown, with larger, easier to
+     follow square (this option is recommended).
+        High - the majority of the grid will be visible, but each square will be very small and
+        therefore harder to follow.
+
+    Screen: what size screen does your computer have (required for output formatting purposes).
+    The options are:
+        Aquarium - one of the monitors from the aquarium (or one of a similar size).
+        Laptop - a 13-15 inch laptop screen.
+
+    Playback: the speed at which the final day will be output. There will be 500 frames in the day,
+    so a slower speed will take longer. However at a faster speed it will be difficult to follow the
+     ants movements. The options are: Slow, Normal (recommended), Fast.
+
+    Num Ants: the number of ants in the colony the previous day.
+
+    Food Delta: this is an output box. Here we will show the total food delta (food_collected -
+    food_consumed) for the current episode. Note that this value will changed at the end of each
+    day, and will reset when a new episode begins (such as during training for q-learning algorithm)
+
+    Once you have made your selections, click the 'Run' button. A loading bar will mark the progress
+     of the run (increasing with each passing day). When the loading bar reaches the end, this means
+      the final day of the run has begun, and it will begin being output to the screen.
